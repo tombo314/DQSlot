@@ -50,7 +50,7 @@ let skillList = [
     "ドルマ",
     "デイン",
     "ザキ",
-    // "ルカニ",
-    // "ホイミ"
+    "ルカニ",
+    "ホイミ"
 ];
 registerSkill(skillList);
