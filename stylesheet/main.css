@@ -34,22 +34,19 @@ html {
   animation-fill-mode: forwards;
 }
 
-.button-stop {
+.button-start {
   margin-top: 30px;
   text-align: center;
 }
-.button-stop .start, .button-stop .stop {
+.button-start .start {
   width: 110px;
   height: 60px;
   font-size: 20px;
 }
-.button-stop .stop {
-  margin-left: 40px;
-}
 
 @keyframes slot {
   0% {
-    transform: translateY(-360px);
+    transform: translateY(-480px);
   }
   100% {
     transform: translateY(0px);
