@@ -15,7 +15,7 @@ html{
     margin: 0 auto;
     text-align: center;
     margin-top: 30vh;
-    border: 2px solid #bbb;
+    border: 2px solid #666;
     overflow: hidden;
 
     .hit{
@@ -24,16 +24,16 @@ html{
         width: 29vw;
         min-width: 290px;
         height: 24px;
-        border: 2px solid #ccc;
+        border: 2px solid #999;
         transform: translateX(0.3vw);
     }
 
     // jsで付与する
-    .slot-move{
+    .slot-mode{
         animation-name: slot;
-        animation-duration: 0.4s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
+        animation-fill-mode: forwards;
     }
 }
 
@@ -48,13 +48,13 @@ html{
         font-size: 20px;
     }
     .stop{
-        margin-left: 20px;
+        margin-left: 40px;
     }
 }
 
 @keyframes slot{
     0%{
-        transform: translateY(-120px);
+        transform: translateY(-360px);
     }
     100%{
         transform: translateY(0px);
