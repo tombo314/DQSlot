@@ -31,7 +31,6 @@ html {
   animation-name: slot;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-fill-mode: forwards;
 }
 
 .button-start {
