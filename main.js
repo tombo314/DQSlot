@@ -24,6 +24,10 @@ elemButtonStart.onclick = ()=>{
 
 let registerSkill = (skillList)=>{
     let skillNum = 10;
+    let len = skillList.length;
+    for (let _=0; _<skillNum-len; _++){
+        skillList.push("攻撃");
+    }
     for (let i=0; i<skillNum*3; i++){
         if (i==2){
             let elem = document.createElement("div");
@@ -46,7 +50,7 @@ let skillList = [
     "ドルマ",
     "デイン",
     "ザキ",
-    "ルカニ",
-    "ホイミ"
+    // "ルカニ",
+    // "ホイミ"
 ];
 registerSkill(skillList);
