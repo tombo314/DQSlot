@@ -8,7 +8,7 @@ class Slot {
         let elemSlot = document.getElementById("js-slot");
         let choiceNum = this.choice.length;
 
-        for (let i=0; i<choiceNum*5; i++){
+        for (let i=0; i<choiceNum*10; i++){
             if (i==2){
                 let elem = document.createElement("div");
                 elem.setAttribute("class", "hit");
@@ -71,7 +71,6 @@ function enableButtonStart(choiceNum){
     };
 }
 
-// スロットの出目
 let choice = [
     "所持金+10%",
     "所持金増加量+10%",
@@ -90,6 +89,29 @@ let slot = new Slot(choice);
 slot.registerChoice();
 slot.setKeyframes();
 
+// 出目
+class Roll{
+    constructor(slot, choice){
+        this.idx;
+        this.choiceNum = slot.choiceNum;
+        this.choice = choice;
+    }
+
+    setIdx(idx){
+        this.idx = idx;
+        this.apply();
+    }
+
+    getIdx(){
+        return (this.idx+2)%this.choiceNum;
+    }
+
+    apply(){
+        let idx = this.getIdx();
+    }
+}
+let roll = new Roll(slot);
+
 // 所持金
 let elemMoney = document.getElementById("js-money");
 let savedMoney = localStorage.getItem("money");
@@ -101,6 +123,8 @@ if (savedMoney===null){
     elemMoney.textContent = money;
 }
 let moneyIncrease = 1;
+let elemUnitMoney = document.getElementById("js-unit-money");
+elemUnitMoney.textContent = moneyIncrease;
 setInterval(() => {
     money += moneyIncrease;
     elemMoney.textContent = money;
@@ -114,20 +138,3 @@ elemButtonReset.onclick = ()=>{
     localStorage.setItem("money", 0);
     elemMoney.textContent = 0;
 }
-
-// 出目
-class Roll{
-    constructor(slot){
-        this.idx;
-        this.choiceNum = slot.choiceNum;
-    }
-
-    setIdx(idx){
-        this.idx = idx;
-    }
-
-    getIdx(){
-        return (this.idx+2)%this.choiceNum;
-    }
-}
-let roll = new Roll(slot);
