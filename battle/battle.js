@@ -56,10 +56,10 @@ function enableButtonStart(choiceNum){
         let spinDuration = 3000;
         setTimeout(() => {
             let unit = -24;
-            let rand = unit*(choiceNum+rand(choiceNum));
+            let randSelect = unit*(choiceNum+rand(choiceNum));
             for (let text of elemTextSlot){
                 text.classList.remove("slot-mode");
-                text.style.transform = `translateY(${rand}px)`;
+                text.style.transform = `translateY(${randSelect}px)`;
             }
             let restartDuration = 800;
             setTimeout(()=>{
@@ -69,6 +69,7 @@ function enableButtonStart(choiceNum){
     };
 }
 
+// スロットの出目
 let choice = [
     "所持金+10%",
     "所持金増加量+10%",
@@ -80,17 +81,34 @@ let choice = [
     "スロット強化30秒",
 ];
 
+// 回すボタン
 enableButtonStart(choice.length);
 
+// スロット
 let slot = new Slot(choice);
 slot.registerChoice();
 slot.setKeyframes();
 
+// 所持金
 let elemMoney = document.getElementById("js-money");
-
-let money = 0;
+let savedMoney = localStorage.getItem("money");
+let money;
+if (savedMoney===null){
+    money = 0;
+} else {
+    money = parseInt(savedMoney);
+    elemMoney.textContent = money;
+}
 let moneyIncrease = 1;
-// setInterval(() => {
-//     money += moneyIncrease;
-//     elemMoney.textContent = money;
-// }, 1000);
+setInterval(() => {
+    money += moneyIncrease;
+    elemMoney.textContent = money;
+    localStorage.setItem("money", money);
+}, 1000);
+
+let elemButtonReset = document.getElementById("js-button-reset");
+elemButtonReset.onclick = ()=>{
+    money = 0;
+    localStorage.setItem("money", 0);
+    elemMoney.textContent = 0;
+}
